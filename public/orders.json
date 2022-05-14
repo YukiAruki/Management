@@ -1,0 +1,32 @@
+[
+  {
+    "class":"oppo",
+    "total": 22000,
+    "month":3500
+  },
+  {
+    "class":"vivo",
+    "total": 24000,
+    "month":2200
+  },
+  {
+    "class":"苹果",
+    "total": 65000,
+    "month":5500
+  },
+  {
+    "class":"小米",
+    "total": 45000,
+    "month":6500
+  },
+  {
+    "class":"三星",
+    "total": 34000,
+    "month":200
+  },
+  {
+    "class":"魅族",
+    "total": 22000,
+    "month":3000
+  }
+]
