@@ -50,18 +50,29 @@
           </div>
         </el-card>
       </div>
-      <el-card style="height: 200px; margin-top:5px;" shadow="hover"> </el-card>
-      <div class="graph">
-        <el-card shadow="hover" style="width:360px;height:240px;"></el-card>
-        <el-card shadow="hover" style="width:360px;height:240px;"></el-card>
-      </div>
+      <all-charts></all-charts>
     </el-col>
   </el-row>
 </template>
-
+<script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
 <script>
+import { getData } from "@/api/data.js";
+import AllCharts from "@/components/content/home/Charts"
+
 export default {
   name: "home-article",
+  components: {
+    AllCharts
+  },
+  mounted() {
+    getData().then((res) => {
+      const { code, orders, countData } = res.data;
+      if (code === 200) {
+        this.orders = orders;
+        this.countData = countData;
+      }
+    });
+  },
   data() {
     return {
       userImg: require("@/assets/img/logo.png"),
@@ -69,76 +80,8 @@ export default {
       useraccess: "超级管理员",
       lasttime: "2022-5-7",
       lastplace: "上海",
-      orders: [
-        {
-          class: "oppo",
-          total: 22000,
-          month: 3500,
-        },
-        {
-          class: "vivo",
-          total: 24000,
-          month: 2200,
-        },
-        {
-          class: "苹果",
-          total: 65000,
-          month: 5500,
-        },
-        {
-          class: "小米",
-          total: 45000,
-          month: 6500,
-        },
-        {
-          class: "三星",
-          total: 34000,
-          month: 2000,
-        },
-        {
-          class: "魅族",
-          total: 22000,
-          month: 3000,
-        },
-      ],
-      countData: [
-        {
-          name: "今日支付订单",
-          value: 1234,
-          icon: "success",
-          color: "#2ec7c9",
-        },
-        {
-          name: "今日收藏订单",
-          value: 1234,
-          icon: "star-on",
-          color: "#ffb980",
-        },
-        {
-          name: "今日未支付订单",
-          value: 1234,
-          icon: "s-goods",
-          color: "#5ab1ef",
-        },
-        {
-          name: "本月支付订单",
-          value: 1234,
-          icon: "success",
-          color: "#2ec7c9",
-        },
-        {
-          name: "本月收藏订单",
-          value: 1234,
-          icon: "star-on",
-          color: "#ffb980",
-        },
-        {
-          name: "本月未支付订单",
-          value: 1234,
-          icon: "s-goods",
-          color: "#5ab1ef",
-        },
-      ],
+      orders: [],
+      countData: [],
     };
   },
 };

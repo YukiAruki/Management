@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>ECharts</title>
+  <!-- 引入刚刚下载的 ECharts 文件 -->
+  <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+</head>
+
+<body>
+  <!-- 为 ECharts 准备一个定义了宽高的 DOM -->
+  <div id="main" style="width: 600px;height:400px;"></div>
+  <script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+    var option = {
+
+      title: {
+        text: '月销售折线图'
+      },
+      tooltip: {
+        trigger: 'axis'
+      },
+      legend: {
+        data: ['oppo', 'vivo', '苹果', '小米', '三星']
+      },
+      grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+      },
+      toolbox: {
+        feature: {
+          saveAsImage: {}
+        }
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['22/01', '22/02', '22/03', '22/04', '22/05']
+      },
+      yAxis: {
+        type: 'value',
+        min: 1000
+      },
+      series: [
+        {
+          name: 'oppo',
+          type: 'line',
+          stack: 'Total1',
+          data: [2100, 2200, 3000, 1900, 1800, 2300, 2100]
+        },
+        {
+          name: 'vivo',
+          type: 'line',
+          stack: 'Total2',
+          data: [1600, 2100, 2800, 2300, 1500, 2200, 2000]
+        },
+        {
+          name: '苹果',
+          type: 'line',
+          stack: 'Total3',
+          data: [2500, 2300, 2000, 2500, 2900, 3300, 2400]
+        },
+        {
+          name: '小米',
+          type: 'line',
+          stack: 'Total4',
+          data: [2300, 2200, 3000, 2400, 1900, 3300, 3200]
+        },
+        {
+          name: '三星',
+          type: 'line',
+          stack: 'Total5',
+          data: [2400, 2100, 1900, 2200, 1900, 2300, 2000]
+        }
+      ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+  </script>
+</body>
+
+</html>

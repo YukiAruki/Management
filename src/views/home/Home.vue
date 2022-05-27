@@ -24,7 +24,7 @@
 <script>
 import NavMenu from "@/components/common/navMenu/NavMenu";
 import CommonHeader from "@/components/content/home/CommonHeader";
-import HomeArticle from "@/components/content/home/HomeArticle"
+import HomeArticle from "@/components/content/home/HomeArticle";
 
 export default {
   components: {
@@ -33,15 +33,15 @@ export default {
     HomeArticle,
   },
   name: "home-view",
-  data(){
+  data() {
     return {
-      shortTitle:"后台",
+      shortTitle: "后台",
       title: "通用后台管理系统",
-      isCollapse:false
-    }
+      isCollapse: false,
+    };
   },
-  methods:{
-  }
+  methods: {},
+  
 };
 </script>
 

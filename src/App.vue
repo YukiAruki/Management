@@ -6,15 +6,15 @@
 
 <script>
 export default {
-  name: 'App',
+  name: "App",
   components: {
-  }
-}
+  },
+};
 </script>
 
 <style>
-  #app {
-    height: 100%;
-    background-color: rgb(244, 244, 244);
-  }
+#app {
+  height: 100%;
+  background-color: rgb(244, 244, 244);
+}
 </style>
