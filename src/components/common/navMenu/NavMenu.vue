@@ -13,7 +13,7 @@
     >
       <h3 v-if="!isCollapse">{{title}}</h3>
       <h3 v-else>{{shortTitle}}</h3>
-      <el-menu-item v-for="item in noChild" :index="item.path" :key="item.path">
+      <el-menu-item @click="changePage(item.label)" v-for="item in noChild" :index="item.path" :key="item.path">
         <i :class="'el-icon-' + item.icon"></i>
         <span slot="title">{{ item.label }}</span>
       </el-menu-item>
@@ -67,11 +67,11 @@ export default {
   props:{
     title: {
       type: String,
-      default:"未命名项目"
+      default:"通用后台管理系统"
     },
     shortTitle: {
       type: String,
-      default:"简称"
+      default:"后台"
     }
   },
   data() {
@@ -128,6 +128,9 @@ export default {
     handleClose(key, keyPath) {
       console.log(key, keyPath);
     },
+    changePage(data){
+      this.$store.commit('changePage', data)
+    }
   },
   computed: {
     // filter中无children指向则返回

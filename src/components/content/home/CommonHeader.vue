@@ -7,7 +7,7 @@
         size="mini"
         @click="handleMenu"
       ></el-button>
-      <h4 style="color: #fff; margin-left: 20px">首页</h4>
+      <h4 style="color: #fff; margin-left: 20px">{{getPageName}}</h4>
     </div>
     <div class="r-content">
       <el-dropdown trigger="click" size="mini">
@@ -38,6 +38,11 @@ export default {
       userImg: require("@/assets/img/logo.png"),
     };
   },
+  computed: {
+    getPageName(){
+      return this.$store.state.curPage
+    }
+  }
 };
 </script>
 
