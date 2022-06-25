@@ -91,12 +91,11 @@ export default {
 
   updateUser(config) {
     const { id, username, gender, age, userType } = JSON.parse(config.body)
-    const sex_num = parseInt(gender)
 
     UserList.some(u => {
       if (u.id === id) {
         u.username = username
-        u.gender = sex_num
+        u.gender = gender
         u.age = age
         u.userType = userType
 

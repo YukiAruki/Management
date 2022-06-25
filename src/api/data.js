@@ -6,7 +6,6 @@ export const getData = () => {
   })
 }
 
-
 export const getUserList = () =>{
   return axios.request({
     url: '/user/getUserList'

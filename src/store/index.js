@@ -6,7 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    curPage: '首页'
+    curPage: '首页',
+    userProfile:{}
   },
   modules: {
     tab
@@ -14,6 +15,9 @@ export default new Vuex.Store({
   mutations:{
     changePage(state, data){
       state.curPage = data
+    },
+    userProfile(state, data){
+      state.userProfile = data
     }
   }
 })

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import { Button, Container, Main, Header, Aside, Col, Menu, Submenu, MenuItem, MenuItemGroup, Dropdown, DropdownItem, DropdownMenu, Row, Card, Form, FormItem, Input, Select, Option, Switch, DatePicker, Table, TableColumn, RadioGroup, Radio, Dialog } from 'element-ui';
+import { Button, Container, Main, Header, Aside, Col, Menu, Submenu, MenuItem, MenuItemGroup, Dropdown, DropdownItem, DropdownMenu, Row, Card, Form, FormItem, Input, Select, Option, Switch, DatePicker, Table, TableColumn, RadioGroup, Radio, Dialog, Alert } from 'element-ui';
 
 import router from '@/router'
 import store from '@/store'
@@ -34,6 +34,7 @@ Vue.use(TableColumn)
 Vue.use(RadioGroup)
 Vue.use(Radio)
 Vue.use(Dialog)
+Vue.use(Alert)
 
 Vue.prototype.$http = http
 Vue.config.productionTip = false

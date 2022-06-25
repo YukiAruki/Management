@@ -9,6 +9,7 @@
         v-if="item.type === 'input'"
         :placeholder="'请输入' + item.label"
         v-model="formData[item.model]"
+        :type="item.inputType"
       >
       </el-input>
       <el-select
@@ -41,7 +42,7 @@
       </el-radio-group>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="onSubmit">立即创建</el-button>
+      <el-button type="primary" @click="onSubmit">提交</el-button>
       <el-button @click="cancel">取消</el-button>
     </el-form-item>
   </el-form>
@@ -73,7 +74,6 @@ export default {
       // 将porp中内容同步到data里
       handler(news) {
         this.formData = news;
-        console.log(news);
       },
     },
   },
@@ -81,10 +81,13 @@ export default {
     onSubmit() {
       if (this.formType === "createUser") {
         this.$http.post("/user/create", this.formData);
-      } else if(this.formType === 'editUser'){
+        this.$emit("submitData", true);
+      } else if (this.formType === "editUser") {
         this.$http.post("/user/edit", this.formData);
+        this.$emit("submitData", true);
+      } else if (this.formType === "login") {
+        this.$emit("submitData", this.formData);
       }
-      this.$emit("submitData", true);
     },
     cancel() {
       // 关闭dialog

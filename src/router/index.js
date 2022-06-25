@@ -4,15 +4,21 @@ import VueRouter from 'vue-router'
 import Home from '@/views/home/Home'
 import Mall from '@/views/mall/Mall'
 import User from '@/views/user/User'
+import Login from '@/views/login/Login'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
+    name: 'Login',
+    component: Login,
+    // 按需引入： () => import('@/views/home/home')
+  },
+  {
+    path: '/home',
     name: 'Home',
     component: Home,
-    // 按需引入： () => import('@/views/home/home')
   },
   {
     path: '/mall',
@@ -27,7 +33,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode:'hash',
+  mode: 'hash',
   routes
 })
 

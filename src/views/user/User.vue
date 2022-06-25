@@ -9,10 +9,25 @@
         v-on:submitData="submitData"
       ></common-form>
     </el-dialog>
-    <el-button type="primary" @click="showCreate" style="margin-bottom: 20px"
-      >新增用户</el-button
-    >
-    <user-info v-if="updateData" @getType="changeData"></user-info>
+    <div class="search">
+      <el-button type="primary" @click="showCreate">新增用户</el-button>
+      <el-input
+        placeholder="搜索用户名"
+        v-model="searchWord"
+        style="width: 250px"
+      >
+        <el-button
+          slot="append"
+          icon="el-icon-search"
+          @click="searchUser"
+        ></el-button>
+      </el-input>
+    </div>
+    <user-info
+      v-if="updateData"
+      @getType="changeData"
+      v-bind:commitSearch="commitSearch"
+    ></user-info>
   </div>
 </template>
 
@@ -35,6 +50,7 @@ export default {
           type: "input",
           model: "username",
           label: "用户名",
+          inputType: "text",
         },
         {
           type: "radio",
@@ -46,6 +62,7 @@ export default {
           type: "input",
           model: "age",
           label: "年龄",
+          inputType: "text",
         },
         {
           type: "select",
@@ -71,6 +88,8 @@ export default {
       },
       updateData: true,
       formType: "",
+      searchWord: "",
+      commitSearch: "",
     };
   },
   methods: {
@@ -105,6 +124,17 @@ export default {
       this.dialogFormVisible = true;
       this.formType = type;
     },
+    searchUser() {
+      this.commitSearch = this.searchWord;
+    },
   },
 };
 </script>
+
+<style scoped>
+.search {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+</style>

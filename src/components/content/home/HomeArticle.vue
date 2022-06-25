@@ -76,7 +76,7 @@ export default {
   data() {
     return {
       userImg: require("@/assets/img/logo.png"),
-      username: "Admin",
+      // username: "Admin",
       useraccess: "超级管理员",
       lasttime: "2022-5-7",
       lastplace: "上海",
@@ -84,6 +84,11 @@ export default {
       countData: [],
     };
   },
+  computed:{
+    username(){
+      return this.$store.state.userProfile.username
+    }
+  }
 };
 </script>
 

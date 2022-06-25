@@ -11,12 +11,27 @@ import StripeTable from "@/components/common/StripeTable.vue";
 import { getUserList } from "@/api/data.js";
 
 export default {
+  props: ["commitSearch"],
   components: {
     StripeTable,
   },
+  watch: {
+    commitSearch: {
+      immediate: true,
+      handler(news) {
+        // 第一次搜索备份数据
+        if (this.oldData.length === 0) {
+          this.oldData = this.tableData;
+        }
+        // 过滤不含搜索关键词的用户
+        this.tableData = this.oldData.filter(
+          (u) => u.username.indexOf(news) != -1
+        );
+      },
+    },
+  },
   mounted() {
     getUserList().then((res) => {
-      console.log(res.data);
       const { code, count, list } = res.data;
       if (code === 200) {
         this.tableData = list;
@@ -46,6 +61,7 @@ export default {
         },
       ],
       tableData: [],
+      oldData: [],
     };
   },
   methods: {
