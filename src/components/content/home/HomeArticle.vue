@@ -5,16 +5,16 @@
         <div class="user">
           <img :src="userImg" />
           <div class="userInfo">
-            <p class="name">{{ username }}</p>
-            <p class="access">{{ useraccess }}</p>
+            <p class="name">{{ getUser.username }}</p>
+            <p class="access">{{ getUser.userType }}</p>
           </div>
         </div>
         <div class="login-info">
           <p>
-            上次登陆时间: <span>{{ lasttime }}</span>
+            上次登陆时间: <span>{{ getUser.lastTime }}</span>
           </p>
           <p>
-            上次登陆地点: <span>{{ lastplace }}</span>
+            上次登陆地点: <span>{{ getUser.place }}</span>
           </p>
         </div>
       </el-card>
@@ -57,12 +57,12 @@
 <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
 <script>
 import { getData } from "@/api/data.js";
-import AllCharts from "@/components/content/home/Charts"
+import AllCharts from "@/components/content/home/Charts";
 
 export default {
   name: "home-article",
   components: {
-    AllCharts
+    AllCharts,
   },
   mounted() {
     getData().then((res) => {
@@ -84,11 +84,11 @@ export default {
       countData: [],
     };
   },
-  computed:{
-    username(){
-      return this.$store.state.userProfile.username
-    }
-  }
+  computed: {
+    getUser() {
+      return this.$store.state.userProfile;
+    },
+  },
 };
 </script>
 

@@ -4,8 +4,9 @@ const userProfile = [
     passw: "123456",
     userType: 1,
     username: "admin",
-    lastTime: "",
-    curTime: "",
+    lastTime: "2022-6-26",
+    curTime: "2022-6-26",
+    place: '上海',
   }
 ]
 
@@ -27,8 +28,9 @@ export default {
           // 存入用户数据
           userData = {
             username: user.username,
-            userType: user.userType,
+            userType: user.userType == 0?'普通用户' : '管理员用户',
             lastTime: user.lastTime,
+            place: user.place,
           }
         }
         break;

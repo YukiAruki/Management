@@ -48,13 +48,13 @@ export default {
   },
   methods: {
     submitData(value) {
+      const that = this;
       this.$http.post("/login", value).then((res) => {
         const { code, msg, data } = res.data;
         if (code === 200) {
           this.$store.commit("userProfile", data);
-          this.$router.replace({ name: "Home" });
+          this.$router.replace.call(that.$router, {name:'Home'})
         } else if (code === 500) {
-          console.log(msg)
           this.alterTitle = msg;
           this.showAlter = true;
         }

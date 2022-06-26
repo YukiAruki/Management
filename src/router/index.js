@@ -11,24 +11,31 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    redirect: '/home'
+    // 按需引入： () => import('@/views/home/home')
+  },
+  {
+    path: '/login',
     name: 'Login',
     component: Login,
-    // 按需引入： () => import('@/views/home/home')
   },
   {
     path: '/home',
     name: 'Home',
     component: Home,
+    meta: { requireAuth: true },
   },
   {
     path: '/mall',
     name: 'Mall',
     component: Mall,
+    meta: { requireAuth: true },
   },
   {
     path: '/user',
     name: 'User',
     component: User,
+    meta: { requireAuth: true },
   }
 ]
 

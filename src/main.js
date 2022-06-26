@@ -39,6 +39,18 @@ Vue.use(Alert)
 Vue.prototype.$http = http
 Vue.config.productionTip = false
 
+router.beforeEach((to, from, next) => {
+  if (to.meta.requireAuth) {
+    if (store.state.userProfile === {}) {
+      next()
+    } else {
+      next({ path: '/login' })
+    }
+  } else {
+    next()
+  }
+})
+
 new Vue({
   store,
   router,

@@ -18,7 +18,11 @@ export default {
     };
   },
   methods: {},
-  
+  computed:{
+    getUserData(){
+      return this.$store.state.userProfile
+    }
+  }
 };
 </script>
 
